@@ -1,0 +1,48 @@
+﻿@model Knith_Horizon.Models.AttendIntegrity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AttendIntegrity</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckFDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckFDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckTDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckTDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Checked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Checked)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

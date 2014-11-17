@@ -1,0 +1,209 @@
+﻿@model Knith_Horizon.Models.AttendIntegrity
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<link href="~/Content/DatePic/jquery.datepick.css" rel="stylesheet" />
+<script src="~/Content/DatePic/jquery.plugin.js"></script>
+<script src="~/Content/DatePic/jquery.datepick.js"></script>
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <form id="form1">
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="col-md-offset-2">
+                KNIT-HORIZON
+            </h1>
+            <hr />
+            <div class="row">
+                <div class="col-sm-8 col-md-offset-1">
+                    <div class="panel panel-warning  ">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Employee Blog
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="nav nav-tabs" id="myNav">
+                                <li class="active"><a href="#one">ATTENDENCE</a></li>
+                                <li><a href="#two">Live</a></li>
+                                <li><a href="#three">Salary</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-offset-1">
+                    <div class="col-lg-10">
+                        <div class="panel panel-primary ">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    UPDATE ATTENDENCE
+                                </h3>
+                            </div>
+                            <div class="panel-body">
+                              
+                                    <fieldset>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                @Html.LabelFor(Model=>Model.CheckFDate)
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar "></span>
+                                                    </span>
+                                                    @Html.TextBoxFor(model => model.CheckFDate, new { @class = "form-control datepicker", placeholder = "Enter Your Date" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.CheckFDate)
+                                            </div>
+                                            <div class="col-xs-4" >
+                                                @Html.LabelFor(Model => Model.CheckTDate)
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar "></span>
+                                                    </span>
+
+                                                    @Html.TextBoxFor(model => model.CheckTDate, new { @class = "form-control datepicker", placeholder = "Enter Your Date" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.CheckTDate )
+                                            </div>
+                                            <div class="col-lg-4">
+                                                @Html.LabelFor(Model => Model.Eno)
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+
+                                                    @Html.TextBoxFor(model => model.Eno , new { @class = "form-control", placeholder = "Single Employee ID" })
+
+                                                </div>
+                                                @Html.ValidationMessageFor(model => model.Eno )
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-10">
+                                                    <div class="input-group col-lg-offset-2 ">
+                                                        <p>
+                                                            <br />
+                                                            <br />
+                                                            <input type="button" value="Download Data" class="btn btn-outline btn-primary" />
+                                                                
+                                                         
+                                                            <input type="button" value="Update Attendence" class="btn btn-outline btn-info" />
+                                                                
+                                                          
+                                                            <input type="button" value=" Work Time Correction" class="btn btn-outline btn-warning " />
+                                                                
+                                                            
+
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                
+                            </div>
+                            <div class="panel-footer">
+                                <!-- Change this to a button or input when using this as a form -->
+
+                                <button type="button" class="btn btn-success btn-lg btn-block">
+                                    Update New Employee To Anviz
+                                </button>
+                            </div>
+                        </div>
+                        <input type="button" value="GO HOME" onclick="location.href='@Url.Action("Index", "Home")'" class="btn btn-primary"   />
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div> 
+</form>
+}
+    @*<div class="form-horizontal">
+        <h4>AttendIntegrity</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Eno, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Eno)
+                @Html.ValidationMessageFor(model => model.Eno)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CheckFDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CheckFDate)
+                @Html.ValidationMessageFor(model => model.CheckFDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CheckTDate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CheckTDate)
+                @Html.ValidationMessageFor(model => model.CheckTDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Checked, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Checked)
+                @Html.ValidationMessageFor(model => model.Checked)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}*@
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+    $(function () {
+        // This will make every element with the class "date-picker" into a DatePicker element
+        $('.datepicker').datepick({
+            changeMonth:true,
+            changeYear: true
+           
+        });
+    })
+</script>
+<script type="text/javascript">
+    $(function () {
+        $('#myNav').affix({
+            offset: {
+                top: 60
+            }
+        });
+    });
+
+    //$(".date-picker").datepicker();
+
+    //$(".date-picker").on("change", function () {
+    //    var id = $(this).attr("id");
+    //    var val = $("label[for='" + id + "']").text();
+    //    $("#msg").text(val + " changed");
+    //});
+</script>
+
+}
